@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Espera - Bloom</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .waitlist-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdf7f7 0%, #ffffff 100%);
+            padding: 100px 0 50px;
+            overflow-y: auto;
+        }
+
+        .waitlist-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .waitlist-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .waitlist-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .waitlist-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .countdown-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(232, 121, 166, 0.1);
+            margin-bottom: 3rem;
+            text-align: center;
+            border: 1px solid rgba(232, 121, 166, 0.1);
+        }
+
+        .countdown-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #e879a6;
+            display: block;
+            line-height: 1;
+            font-family: 'Courier New', monospace;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+
+        .waitlist-form {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(232, 121, 166, 0.1);
+            border: 1px solid rgba(232, 121, 166, 0.1);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(232, 121, 166, 0.2);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e879a6;
+            background: white;
+            box-shadow: 0 0 0 2px rgba(232, 121, 166, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #e879a6;
+            border: none;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #d666a3;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .success-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        .success-text {
+            color: #666;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e879a6;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: #1a1a1a;
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .waitlist-page {
+                padding: 80px 0 30px;
+            }
+
+            .waitlist-container {
+                padding: 0 1rem;
+            }
+
+            .countdown-container,
+            .waitlist-form {
+                padding: 1.5rem;
+            }
+
+            .countdown-timer {
+                gap: 1.5rem;
+            }
+
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-timer {
+                gap: 1rem;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav id="navbar" class="navbar show">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="mascota.png" alt="Bloom" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-content">
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+                    <a href="index.html#como-funciona" class="nav-link">Cómo funciona</a>
+                    <a href="index.html#roadmap" class="nav-link">Roadmap</a>
+                    <a href="index.html#blog" class="nav-link">Blog</a>
+                    <a href="index.html#contacto" class="nav-link">Contacto</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn-secondary">Iniciar sesión</button>
+                </div>
+            </div>
+            
+            <!-- Menú hamburguesa para móvil -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="waitlist-page">
+        <div class="waitlist-container">
+            <a href="index.html" class="back-link">
+                ← Volver al inicio
+            </a>
+
+            <div class="waitlist-header">
+                <h1 class="waitlist-title">Únete a la Lista de Espera</h1>
+                <p class="waitlist-subtitle">
+                    Sé de los primeros en experimentar el futuro del dating. 
+                    Bloom llegará pronto y queremos que seas parte de esta revolución.
+                </p>
+            </div>
+
+            <!-- Contador minimalista -->
+            <div class="countdown-container">
+                <h2 class="countdown-title">Lanzamiento en</h2>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">000</span>
+                        <span class="countdown-label">días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">min</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">seg</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <div class="waitlist-form">
+                <h2 class="form-title">Reserva tu lugar</h2>
+                <form id="waitlist-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Nombre *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Apellidos *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Edad *</label>
+                            <select id="age" name="age" required>
+                                <option value="">Selecciona tu edad</option>
+                                <option value="18-24">18-24 años</option>
+                                <option value="25-29">25-29 años</option>
+                                <option value="30-34">30-34 años</option>
+                                <option value="35-39">35-39 años</option>
+                                <option value="40-44">40-44 años</option>
+                                <option value="45+">45+ años</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Género *</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Selecciona</option>
+                                <option value="mujer">Mujer</option>
+                                <option value="hombre">Hombre</option>
+                                <option value="no-binario">No binario</option>
+                                <option value="prefiero-no-decir">Prefiero no decir</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">Ciudad *</label>
+                        <input type="text" id="city" name="city" placeholder="ej. Madrid, Barcelona..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interests">¿Qué buscas en Bloom?</label>
+                        <select id="interests" name="interests">
+                            <option value="">Selecciona una opción</option>
+                            <option value="relacion-seria">Una relación seria</option>
+                            <option value="conocer-gente">Conocer gente nueva</option>
+                            <option value="citas-casuales">Citas casuales</option>
+                            <option value="amistad">Amistad</option>
+                            <option value="no-seguro">No estoy seguro/a</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter" checked>
+                        <label for="newsletter">
+                            Quiero recibir actualizaciones sobre el desarrollo de Bloom y consejos sobre dating por email.
+                        </label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            Acepto los <a href="#" style="color: #e879a6;">términos y condiciones</a> y la <a href="#" style="color: #e879a6;">política de privacidad</a>. *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span class="submit-text">Unirme a la lista de espera</span>
+                        <span class="submit-loading" style="display: none;">Procesando...</span>
+                    </button>
+                </form>
+
+                <div class="success-message" id="success-message">
+                    <div class="success-icon">🎉</div>
+                    <h3 class="success-title">¡Bienvenido/a a Bloom!</h3>
+                    <p class="success-text">
+                        Te hemos enviado un email de confirmación. Eres oficialmente parte de nuestra lista de espera 
+                        y serás de los primeros en conocer cuando lancemos la app. 
+                        <br><br>
+                        ¡Prepárate para encontrar conexiones reales!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Contador regresivo
+        function initCountdown() {
+            const targetDate = new Date();
+            targetDate.setFullYear(targetDate.getFullYear() + 1); // Un año desde ahora
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate.getTime() - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("days").textContent = days.toString().padStart(3, '0');
+                document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    document.getElementById("countdown").innerHTML = "<h2>¡Ya está aquí!</h2>";
+                }
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }
+
+        // Formulario
+        function initWaitlistForm() {
+            const form = document.getElementById("waitlist-form");
+            const submitBtn = form.querySelector(".submit-btn");
+            const submitText = submitBtn.querySelector(".submit-text");
+            const submitLoading = submitBtn.querySelector(".submit-loading");
+            const successMessage = document.getElementById("success-message");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                // Mostrar estado de carga
+                submitBtn.disabled = true;
+                submitText.style.display = "none";
+                submitLoading.style.display = "inline";
+
+                // Simular envío (aquí conectarías con tu backend)
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+
+                // Ocultar formulario y mostrar mensaje de éxito
+                form.style.display = "none";
+                successMessage.classList.add("show");
+
+                // Simular envío de email de confirmación
+                console.log("Email de confirmación enviado a:", form.email.value);
+            });
+        }
+
+        // Menú móvil
+        function initMobileMenu() {
+            const hamburger = document.getElementById("hamburger");
+            const navMenu = document.getElementById("nav-menu");
+
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navMenu.addEventListener("click", (e) => {
+                if (e.target.classList.contains("nav-link")) {
+                    hamburger.classList.remove("active");
+                    navMenu.classList.remove("active");
+                }
+            });
+        }
+
+        // Inicializar todo
+        document.addEventListener("DOMContentLoaded", () => {
+            initCountdown();
+            initWaitlistForm();
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>

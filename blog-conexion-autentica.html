@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Futuro del Dating: Más Allá de las Fotos Perfectas - Bloom Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-page {
+            min-height: 100vh;
+            background: #ffffff;
+            padding: 100px 0 50px;
+            overflow-y: auto;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+        }
+
+        .blog-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-category-tag {
+            background: rgba(232, 121, 166, 0.1);
+            color: #e879a6;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .blog-date-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .blog-main-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-excerpt-text {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 2.5rem 0 1.5rem;
+            line-height: 1.3;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 2rem 0 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .blog-content blockquote {
+            background: rgba(232, 121, 166, 0.05);
+            border-left: 4px solid #e879a6;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .blog-content strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fdf7f7 0%, #ffffff 100%);
+            border: 1px solid rgba(232, 121, 166, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: #e879a6;
+            margin-top: 0;
+        }
+
+        .future-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid rgba(232, 121, 166, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(232, 121, 166, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e879a6;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #1a1a1a;
+            transform: translateX(-3px);
+        }
+
+        .blog-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(232, 121, 166, 0.2);
+            gap: 1rem;
+        }
+
+        .nav-article {
+            flex: 1;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .nav-article:hover {
+            color: #e879a6;
+        }
+
+        .nav-article.prev {
+            text-align: left;
+        }
+
+        .nav-article.next {
+            text-align: right;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .blog-page {
+                padding: 80px 0 30px;
+            }
+
+            .blog-container {
+                padding: 0 1rem;
+            }
+
+            .blog-featured-image {
+                height: 250px;
+            }
+
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .blog-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .future-features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.2rem;
+            }
+
+            .blog-navigation {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .nav-article {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .blog-content {
+                font-size: 1rem;
+            }
+
+            .blog-content p,
+            .blog-content li {
+                font-size: 1rem;
+            }
+
+            .highlight-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav id="navbar" class="navbar show">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="mascota.png" alt="Bloom" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-content">
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+                    <a href="index.html#como-funciona" class="nav-link">Cómo funciona</a>
+                    <a href="index.html#roadmap" class="nav-link">Roadmap</a>
+                    <a href="index.html#blog" class="nav-link">Blog</a>
+                    <a href="index.html#contacto" class="nav-link">Contacto</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn-secondary">Iniciar sesión</button>
+                    <a href="waitlist.html" class="btn-primary">Lista de espera</a>
+                </div>
+            </div>
+            
+            <!-- Menú hamburguesa para móvil -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="blog-page">
+        <div class="blog-container">
+            <a href="index.html#blog" class="back-link">
+                ← Volver al blog
+            </a>
+
+            <article class="blog-header">
+                <div class="blog-meta-info">
+                    <span class="blog-category-tag">Futuro</span>
+                    <span class="blog-date-info">5 de Enero, 2024</span>
+                </div>
+
+                <h1 class="blog-main-title">El Futuro del Dating: Más Allá de las Fotos Perfectas</h1>
+                
+                <p class="blog-excerpt-text">
+                    Exploramos cómo la tecnología emergente y los nuevos enfoques están transformando 
+                    el mundo del dating digital hacia conexiones más auténticas y significativas.
+                </p>
+
+                <img src="/placeholder.svg?height=400&width=800" alt="Futuro del dating" class="blog-featured-image">
+            </article>
+
+            <div class="blog-content">
+                <p>Estamos en un punto de inflexión en la historia del dating digital. Después de más de una década dominada por el swipe superficial y la cultura de las fotos perfectas, una nueva generación de aplicaciones está emergiendo con una promesa revolucionaria: priorizar la autenticidad sobre la apariencia, las conexiones profundas sobre los matches masivos.</p>
+
+                <p>En Bloom, no solo somos testigos de esta transformación, sino que estamos liderando el cambio hacia un futuro donde encontrar el amor sea más humano, más real y más satisfactorio.</p>
+
+                <h2>Los Problemas del Dating Actual</h2>
+                
+                <p>Antes de explorar hacia dónde nos dirigimos, es importante entender los desafíos que enfrentamos hoy:</p>
+
+                <ul>
+                    <li><strong>Superficialidad extrema:</strong> El 90% de las decisiones se basan únicamente en la primera foto</li>
+                    <li><strong>Fatiga de swipe:</strong> Los usuarios reportan agotamiento y desilusión</li>
+                    <li><strong>Paradoja de la elección:</strong> Demasiadas opciones llevan a la indecisión</li>
+                    <li><strong>Conexiones vacías:</strong> Muchos matches pero pocas conversaciones significativas</li>
+                    <li><strong>Presión por la perfección:</strong> Perfiles curados que no reflejan la realidad</li>
+                </ul>
+
+                <blockquote>
+                    "Hemos creado un sistema donde las personas se han convertido en productos de consumo, evaluados y descartados en segundos. Es hora de humanizar el dating digital."
+                    <br><br>
+                    - Equipo de Bloom
+                </blockquote>
+
+                <h2>Tecnologías Emergentes que Cambiarán el Juego</h2>
+
+                <h3>1. Inteligencia Artificial Empática</h3>
+                <p>La próxima generación de IA no solo analizará fotos y preferencias básicas, sino que entenderá personalidades, valores y compatibilidad emocional profunda. Imagina un algoritmo que pueda identificar si dos personas tienen el mismo sentido del humor o comparten valores fundamentales sobre la vida.</p>
+
+                <h3>2. Realidad Aumentada para Citas Virtuales</h3>
+                <p>La AR permitirá "citas" inmersivas desde casa, donde podrás caminar por un museo virtual con tu match o cocinar juntos en un espacio digital compartido. Esto reducirá la presión de las primeras citas mientras crea experiencias memorables.</p>
+
+                <h3>3. Análisis de Voz y Lenguaje</h3>
+                <p>La tecnología de procesamiento de lenguaje natural analizará no solo qué dices, sino cómo lo dices. El tono, el ritmo y las palabras elegidas revelan mucho más sobre la personalidad que cualquier foto.</p>
+
+                <h3>4. Biometría Emocional</h3>
+                <p>Sensores avanzados podrán detectar respuestas emocionales genuinas, ayudando a identificar conexiones auténticas versus atracción superficial.</p>
+
+                <div class="highlight-box">
+                    <h3>🔮 Visión Futura</h3>
+                    <p>En 5 años, las apps de citas podrán predecir la compatibilidad a largo plazo con un 85% de precisión, basándose en patrones de comunicación, valores compartidos y química emocional real.</p>
+                </div>
+
+                <h2>El Cambio Hacia la Autenticidad</h2>
+
+                <p>La nueva generación de usuarios está cansada de la superficialidad. Los estudios muestran que el 73% de los millennials y Gen Z prefieren perfiles "imperfectos pero reales" sobre fotos altamente editadas.</p>
+
+                <h3>Tendencias Emergentes:</h3>
+                <ul>
+                    <li><strong>Fotos sin filtros:</strong> Movimiento hacia la belleza natural</li>
+                    <li><strong>Videos espontáneos:</strong> Clips cortos que muestran personalidad real</li>
+                    <li><strong>Prompts creativos:</strong> Preguntas que revelan valores y humor</li>
+                    <li><strong>Verificación de autenticidad:</strong> Sistemas para confirmar identidad real</li>
+                    <li><strong>Slow dating:</strong> Enfoque en calidad sobre cantidad</li>
+                </ul>
+
+                <h2>Funciones Innovadoras del Futuro</h2>
+
+                <div class="future-features">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎭</span>
+                        <h4 class="feature-title">Matching por Personalidad</h4>
+                        <p class="feature-description">Algoritmos que analizan patrones de comunicación y comportamiento para encontrar compatibilidad real.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🎮</span>
+                        <h4 class="feature-title">Citas Gamificadas</h4>
+                        <p class="feature-description">Actividades interactivas que revelan personalidad mientras se divierten juntos.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🧠</span>
+                        <h4 class="feature-title">Coach de Relaciones IA</h4>
+                        <p class="feature-description">Asistente inteligente que ayuda a mejorar habilidades de comunicación y dating.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🌱</span>
+                        <h4 class="feature-title">Crecimiento Personal</h4>
+                        <p class="feature-description">Herramientas para el autoconocimiento y desarrollo de habilidades sociales.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🔒</span>
+                        <h4 class="feature-title">Privacidad Avanzada</h4>
+                        <p class="feature-description">Control total sobre qué información compartir y con quién.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <span class="feature-icon">🌍</span>
+                        <h4 class="feature-title">Conexiones Globales</h4>
+                        <p class="feature-description">Tecnología que supera barreras de idioma y cultura para conexiones mundiales.</p>
+                    </div>
+                </div>
+
+                <h2>La Revolución de Bloom</h2>
+
+                <p>En Bloom, estamos construyendo muchas de estas innovaciones desde cero. Nuestra visión va más allá de ser "otra app de citas" - queremos ser la plataforma que redefine cómo las personas se conectan en la era digital.</p>
+
+                <h3>Nuestras Innovaciones Clave:</h3>
+
+                <ol>
+                    <li><strong>Algorit

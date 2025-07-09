@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Psicología del Swipe: Por Qué Deslizamos Como Lo Hacemos - Bloom Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-page {
+            min-height: 100vh;
+            background: #ffffff;
+            padding: 100px 0 50px;
+            overflow-y: auto;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+        }
+
+        .blog-meta-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-category-tag {
+            background: rgba(232, 121, 166, 0.1);
+            color: #e879a6;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .blog-date-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .blog-main-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-excerpt-text {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 2.5rem 0 1.5rem;
+            line-height: 1.3;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 2rem 0 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .blog-content blockquote {
+            background: rgba(232, 121, 166, 0.05);
+            border-left: 4px solid #e879a6;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #555;
+        }
+
+        .blog-content strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fdf7f7 0%, #ffffff 100%);
+            border: 1px solid rgba(232, 121, 166, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: #e879a6;
+            margin-top: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            background: white;
+            border: 1px solid rgba(232, 121, 166, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #e879a6;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #e879a6;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #1a1a1a;
+            transform: translateX(-3px);
+        }
+
+        .blog-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(232, 121, 166, 0.2);
+            gap: 1rem;
+        }
+
+        .nav-article {
+            flex: 1;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .nav-article:hover {
+            color: #e879a6;
+        }
+
+        .nav-article.prev {
+            text-align: left;
+        }
+
+        .nav-article.next {
+            text-align: right;
+        }
+
+        .nav-label {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .blog-page {
+                padding: 80px 0 30px;
+            }
+
+            .blog-container {
+                padding: 0 1rem;
+            }
+
+            .blog-featured-image {
+                height: 250px;
+            }
+
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .blog-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .blog-navigation {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .nav-article {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .blog-content {
+                font-size: 1rem;
+            }
+
+            .blog-content p,
+            .blog-content li {
+                font-size: 1rem;
+            }
+
+            .highlight-box {
+                padding: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav id="navbar" class="navbar show">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="mascota.png" alt="Bloom" class="nav-logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-content">
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html#inicio" class="nav-link">Inicio</a>
+                    <a href="index.html#como-funciona" class="nav-link">Cómo funciona</a>
+                    <a href="index.html#roadmap" class="nav-link">Roadmap</a>
+                    <a href="index.html#blog" class="nav-link">Blog</a>
+                    <a href="index.html#contacto" class="nav-link">Contacto</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn-secondary">Iniciar sesión</button>
+                    <a href="waitlist.html" class="btn-primary">Lista de espera</a>
+                </div>
+            </div>
+            
+            <!-- Menú hamburguesa para móvil -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="blog-page">
+        <div class="blog-container">
+            <a href="index.html#blog" class="back-link">
+                ← Volver al blog
+            </a>
+
+            <article class="blog-header">
+                <div class="blog-meta-info">
+                    <span class="blog-category-tag">Psicología</span>
+                    <span class="blog-date-info">10 de Enero, 2024</span>
+                </div>
+
+                <h1 class="blog-main-title">La Psicología del Swipe: Por Qué Deslizamos Como Lo Hacemos</h1>
+                
+                <p class="blog-excerpt-text">
+                    Un análisis profundo sobre los mecanismos psicológicos que impulsan nuestro comportamiento 
+                    en las apps de citas y cómo esto afecta nuestras decisiones románticas.
+                </p>
+
+                <img src="/placeholder.svg?height=400&width=800" alt="Psicología del swipe" class="blog-featured-image">
+            </article>
+
+            <div class="blog-content">
+                <p>Cada día, millones de personas alrededor del mundo realizan el mismo gesto: deslizar el dedo hacia la izquierda o derecha en sus teléfonos, tomando decisiones románticas en fracciones de segundo. Este simple movimiento ha revolucionado la forma en que conocemos gente, pero ¿qué sucede realmente en nuestro cerebro durante este proceso?</p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">1.6B</span>
+                        <span class="stat-label">Swipes diarios en Tinder</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0.9s</span>
+                        <span class="stat-label">Tiempo promedio de decisión</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">90%</span>
+                        <span class="stat-label">Decisiones basadas en la primera foto</span>
+                    </div>
+                </div>
+
+                <h2>El Cerebro en Modo Automático</h2>
+                
+                <p>Cuando abrimos una app de citas, nuestro cerebro entra en lo que los psicólogos llaman "procesamiento automático". Este es un estado mental donde tomamos decisiones rápidas basadas en patrones reconocidos, sin el análisis consciente profundo que aplicaríamos en otras situaciones importantes de la vida.</p>
+
+                <blockquote>
+                    "El swipe activa los mismos circuitos neurológicos que los juegos de azar: la anticipación de una recompensa variable crea una respuesta adictiva en nuestro sistema de dopamina."
+                    <br><br>
+                    - Dr. Helen Fisher, Antropóloga
+                </blockquote>
+
+                <h3>Los Tres Sistemas de Decisión</h3>
+
+                <p>Según la investigación en neurociencia, cuando evaluamos un perfil, tres sistemas cerebrales trabajan simultáneamente:</p>
+
+                <ol>
+                    <li><strong>Sistema de Atracción:</strong> Evalúa el atractivo físico en milisegundos</li>
+                    <li><strong>Sistema de Recompensa:</strong> Busca señales de compatibilidad y estatus</li>
+                    <li><strong>Sistema de Apego:</strong> Imagina el potencial de conexión emocional</li>
+                </ol>
+
+                <h2>La Paradoja de la Elección</h2>
+
+                <p>Uno de los fenómenos más fascinantes del dating digital es cómo la abundancia de opciones afecta nuestro comportamiento. El psicólogo Barry Schwartz describió la "paradoja de la elección": tener demasiadas opciones puede llevarnos a la parálisis de decisión o a la insatisfacción constante.</p>
+
+                <div class="highlight-box">
+                    <h3>🧠 Dato Curioso</h3>
+                    <p>Los estudios muestran que después de ver más de 20 perfiles consecutivos, nuestra capacidad de discriminación disminuye significativamente. Comenzamos a rechazar perfiles que en otras circunstancias habríamos considerado atractivos.</p>
+                </div>
+
+                <h3>El Efecto "Grass is Greener"</h3>
+
+                <p>La constante disponibilidad de nuevos perfiles crea lo que los psicólogos llaman el efecto "grass is greener" (la hierba es más verde del otro lado). Esto nos lleva a:</p>
+
+                <ul>
+                    <li>Mantener estándares irrealmente altos</li>
+                    <li>Descartar conexiones potenciales demasiado rápido</li>
+                    <li>Buscar constantemente la "opción perfecta"</li>
+                    <li>Experimentar FOMO (fear of missing out) romántico</li>
+                </ul>
+
+                <h2>Los Sesgos Cognitivos en Acción</h2>
+
+                <p>Nuestro comportamiento de swipe está influenciado por múltiples sesgos cognitivos que evolucionaron para ayudarnos a tomar decisiones rápidas de supervivencia, pero que pueden no ser ideales para encontrar el amor:</p>
+
+                <h3>1. Sesgo de Confirmación</h3>
+                <p>Tendemos a buscar información que confirme nuestras primeras impresiones. Si la primera foto nos gusta, interpretamos el resto del perfil de manera más favorable.</p>
+
+                <h3>2. Efecto Halo</h3>
+                <p>Una característica positiva (como el atractivo físico) influye en cómo percibimos todas las demás características de la persona.</p>
+
+                <h3>3. Sesgo de Disponibilidad</h3>
+                <p>Damos más peso a la información que está fácilmente disponible (fotos) que a la que requiere más esfuerzo procesar (biografía, intereses).</p>
+
+                <h3>4. Sesgo de Anclaje</h3>
+                <p>La primera información que vemos (generalmente la foto principal) "ancla" nuestra percepción de todo el perfil.</p>
+
+                <h2>El Rol de la Dopamina</h2>
+
+                <p>El sistema de recompensas de nuestro cerebro juega un papel crucial en la adicción al swipe. Cada match libera dopamina, el neurotransmisor asociado con el placer y la motivación. Pero aquí está el truco: es la <em>anticipación</em> de la recompensa, no la recompensa en sí, lo que crea la sensación más intensa.</p>
+
+                <p>Esto explica por qué:</p>
+                <ul>
+                    <li>Seguimos deslizando incluso después de conseguir matches</li>
+                    <li>La emoción del match a menudo supera la del encuentro real</li>
+                    <li>Desarrollamos tolerancia y necesitamos más matches para sentir la misma satisfacción</li>
+                </ul>
+
+                <h2>Diferencias de Género en el Swipe</h2>
+
+                <p>La investigación ha revelado patrones interesantes en cómo hombres y mujeres usan las apps de citas:</p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">46%</span>
+                        <span class="stat-label">Tasa de swipe right - Hombres</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">14%</span>
+                        <span class="stat-label">Tasa de swipe right - Mujeres</span>
+                    </div>
+                </div>
+
+                <h3>Estrategias Evolutivas</h3>
+                <p>Estas diferencias reflejan estrategias evolutivas distintas:</p>
+
+                <ul>
+                    <li><strong>Estrategia masculina:</strong> Mayor volumen, menor selectividad inicial</li>
+                    <li><strong>Estrategia femenina:</strong> Mayor selectividad, evaluación más cuidadosa</li>
+                </ul>
+
+                <h2>El Impacto en las Relaciones Reales</h2>
+
+                <p>La psicología del swipe no se queda en la app; influye en cómo nos comportamos en las citas reales:</p>
+
+                <h3>Efectos Positivos:</h3>
+                <ul>
+                    <li>Mayor confianza para iniciar conversaciones</li>
+                    <li>Exposición a mayor diversidad de personas</li>
+                    <li>Reducción de la ansiedad social inicial</li>
+                </ul>
+
+                <h3>Efectos Negativos:</h3>
+                <ul>
+                    <li>Mentalidad "desechable" hacia las conexiones</li>
+                    <li>Dificultad para comprometerse con una persona</li>
+                    <li>Expectativas irreales basadas en perfiles curados</li>
+                    <li>Reducción de la tolerancia a la imperfección</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h3>💡 Reflexión</h3>
+                    <p>¿Te has preguntado cuántas conexiones potenciales has descartado en segundos que podrían haber sido significativas si las hubieras conocido en persona?</p>
+                </div>
+
+                <h2>Hacia un Dating Más Consciente</h2>
+
+                <p>Entender la psicología detrás de nuestro comportamiento de swipe es el primer paso para usarlo de manera más efectiva. Algunas estrategias para un dating más consciente incluyen:</p>
+
+                <ol>
+                    <li><strong>Establece límites de tiempo:</strong> Usa las apps en sesiones cortas y definidas</li>
+                    <li><strong>Lee las biografías:</strong> Dedica tiempo a la información más allá de las fotos</li>
+                    <li><strong>Practica la paciencia:</strong> No descartes perfiles inmediatamente</li>
+                    <li><strong>Reflexiona sobre tus patrones:</strong> ¿Qué te atrae y por qué?</li>
+                    <li><strong>Prioriza la calidad sobre la cantidad:</strong> Mejor pocos matches significativos que muchos superficiales</li>
+                </ol>
+
+                <h2>El Futuro del Dating Digital</h2>
+
+                <p>En Bloom, estamos diseñando una experiencia que tiene en cuenta estos insights psicológicos. Nuestro objetivo es crear un entorno que fomente conexiones más profundas y decisiones más reflexivas, sin sacrificar la conveniencia del dating digital.</p>
+
+                <p>Algunas de las innovaciones que estamos desarrollando incluyen:</p>
+                <ul>
+                    <li>Algoritmos que priorizan la compatibilidad sobre la apariencia</li>
+                    <li>Funciones que fomentan conversaciones más profundas</li>
+                    <li>Límites saludables para prevenir el uso compulsivo</li>
+                    <li>Herramientas de reflexión personal para entender mejor tus patrones</li>
+                </ul>
+
+                <h2>Conclusión</h2>
+
+                <p>El swipe ha democratizado el dating, pero también ha creado nuevos desafíos psicológicos. Al entender los mecanismos mentales que impulsan nuestro comportamiento, podemos tomar decisiones más conscientes y crear conexiones más auténticas.</p>
+
+                <p>La próxima vez que abras una app de citas, recuerda: detrás de cada perfil hay una persona real con una historia compleja. Tal vez vale la pena tomarse un momento extra antes de deslizar.</p>
+
+                <p><strong>¿Quieres ser parte de una nueva generación de dating apps que priorizan las conexiones reales? Únete a nuestra lista de espera y ayúdanos a construir el futuro del amor digital.</strong></p>
+            </div>
+
+            <nav class="blog-navigation">
+                <a href="blog-conexion-autentica.html" class="nav-article prev">
+                    <span class="nav-label">← Artículo anterior</span>
+                    <span class="nav-title">El Futuro del Dating: Más Allá de las Fotos Perfectas</span>
+                </a>
+                
+                <a href="blog-conversaciones-significativas.html" class="nav-article next">
+                    <span class="nav-label">Siguiente artículo →</span>
+                    <span class="nav-title">Cómo Tener Conversaciones Significativas en Apps de Citas</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <script>
+        // Menú móvil
+        function initMobileMenu() {
+            const hamburger = document.getElementById("hamburger");
+            const navMenu = document.getElementById("nav-menu");
+
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navMenu.classList.toggle("active");
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navMenu.addEventListener("click", (e) => {
+                if (e.target.classList.contains("nav-link")) {
+                    hamburger.classList.remove("active");
+                    navMenu.classList.remove("active");
+                }
+            });
+        }
+
+        // Inicializar
+        document.addEventListener("DOMContentLoaded", () => {
+            initMobileMenu();
+        });
+    </script>
+</body>
+</html>

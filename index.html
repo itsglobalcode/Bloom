@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom - Conecta desde el corazón</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo.PNG-BftsKnejMRjkp92N19xn4SzYutqj1O.png" alt="Bloom Logo" class="logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <main id="main-content" class="main-content">
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Bienvenido a Bloom
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Donde las conexiones reales florecen
+                </p>
+                
+                <button class="btn-hero" onclick="window.location.href='waitlist.html'">Únete a la lista de espera</button>
+            </div>
+        </section>
+
+        <!-- Sección Cómo funciona -->
+        <section id="como-funciona" class="how-it-works-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">¿Cómo funciona Bloom?</h2>
+                    <p class="section-subtitle">Somos diferentes. Te acompañamos en un proceso único para encontrar conexiones reales.</p>
+                </div>
+
+                <!-- Slider de pasos -->
+                <div class="steps-slider">
+                    <div class="slider-container">
+                        <div class="slides-wrapper" id="slides-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="slide active">
+                                <div class="slide-content">
+                                    <div class="step-number">01</div>
+                                    <div class="step-icon">🧠</div>
+                                    <h3 class="step-title">Te conocemos a fondo</h3>
+                                    <p class="step-description">
+                                        Comenzamos con un quiz personalizado que va más allá de lo superficial. 
+                                        Entendemos tu personalidad, valores, intereses y lo que realmente buscas en una relación.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <div class="step-number">02</div>
+                                    <div class="step-icon">💝</div>
+                                    <h3 class="step-title">Emparejamiento inteligente</h3>
+                                    <p class="step-description">
+                                        Nuestro algoritmo te conecta con personas que realmente son compatibles contigo, 
+                                        basándose en compatibilidad profunda, no solo en apariencia.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <div class="step-number">03</div>
+                                    <div class="step-icon">🎮</div>
+                                    <h3 class="step-title">Conexiones reales</h3>
+                                    <p class="step-description">
+                                        Organizamos juegos, temas de conversación y retos dentro de la app para que 
+                                        rompas el hielo de forma natural y descubras si hay química real.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <div class="step-number">04</div>
+                                    <div class="step-icon">⭐</div>
+                                    <h3 class="step-title">Citas que suceden</h3>
+                                    <p class="step-description">
+                                        Tenemos un sistema de puntos y reputación. Si no mantienes tus compromisos de citas, 
+                                        pierdes acceso. Así garantizamos que todos estén realmente comprometidos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Indicadores -->
+                    <div class="slider-dots">
+                        <button class="dot active" data-slide="0"></button>
+                        <button class="dot" data-slide="1"></button>
+                        <button class="dot" data-slide="2"></button>
+                        <button class="dot" data-slide="3"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Roadmap -->
+        <section id="roadmap" class="roadmap-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nuestro Roadmap</h2>
+                    <p class="section-subtitle">El futuro de Bloom: construyendo el amor del mañana, paso a paso.</p>
+                </div>
+
+                <div class="roadmap-zigzag">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Q1 2024</div>
+                            <h3 class="timeline-title">Concepto y Diseño</h3>
+                            <p class="timeline-description">
+                                Investigación de mercado y creación de prototipos.
+                            </p>
+                            <div class="timeline-status completed">Completado</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Q2 2024</div>
+                            <h3 class="timeline-title">Desarrollo MVP</h3>
+                            <p class="timeline-description">
+                                Algoritmo de emparejamiento y funcionalidades básicas.
+                            </p>
+                            <div class="timeline-status completed">Completado</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item in-progress">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Q3 2024</div>
+                            <h3 class="timeline-title">Beta Cerrada</h3>
+                            <p class="timeline-description">
+                                Lanzamiento beta con usuarios seleccionados.
+                            </p>
+                            <div class="timeline-status in-progress">En Progreso</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item upcoming">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Q4 2024</div>
+                            <h3 class="timeline-title">Lanzamiento Público</h3>
+                            <p class="timeline-description">
+                                Lanzamiento oficial con todas las funcionalidades.
+                            </p>
+                            <div class="timeline-status upcoming">Próximamente</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item future">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025</div>
+                            <h3 class="timeline-title">Expansión Global</h3>
+                            <p class="timeline-description">
+                                Expansión internacional y nuevas funcionalidades.
+                            </p>
+                            <div class="timeline-status future">Futuro</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Blog -->
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Blog de Bloom</h2>
+                    <p class="section-subtitle">Consejos, historias y reflexiones sobre el amor auténtico en la era digital.</p>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card featured">
+                        <div class="blog-image">
+                            <img src="/placeholder.svg?height=300&width=500" alt="Conversaciones significativas" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Consejos</span>
+                                <span class="blog-date">15 Mar 2024</span>
+                            </div>
+                            <h3 class="blog-title">Cómo tener conversaciones que realmente importan</h3>
+                            <p class="blog-excerpt">
+                                Descubre las claves para crear conexiones profundas desde la primera conversación. 
+                                Tips prácticos para ir más allá del "¿Cómo estás?"
+                            </p>
+                            <a href="blog-conversaciones-significativas.html" class="blog-link">Leer más →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="/placeholder.svg?height=250&width=400" alt="Psicología del dating" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Psicología</span>
+                                <span class="blog-date">10 Mar 2024</span>
+                            </div>
+                            <h3 class="blog-title">La psicología detrás del swipe</h3>
+                            <p class="blog-excerpt">
+                                ¿Por qué las apps tradicionales no funcionan? Analizamos la ciencia detrás de las conexiones reales.
+                            </p>
+                            <a href="blog-psicologia-swipe.html" class="blog-link">Leer más →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="/placeholder.svg?height=250&width=400" alt="Relaciones exitosas" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Relaciones</span>
+                                <span class="blog-date">5 Mar 2024</span>
+                            </div>
+                            <h3 class="blog-title">5 señales de una conexión auténtica</h3>
+                            <p class="blog-excerpt">
+                                Aprende a identificar cuando una conexión tiene potencial real más allá de la atracción inicial.
+                            </p>
+                            <a href="blog-conexion-autentica.html" class="blog-link">Leer más →</a>
+                        </div>
+                    </article>
+
+                    <div class="blog-with-mascot">
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="/placeholder.svg?height=250&width=400" alt="Desafíos del dating moderno" class="blog-img">
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category">Tendencias</span>
+                                    <span class="blog-date">1 Mar 2024</span>
+                                </div>
+                                <h3 class="blog-title">El futuro del dating digital</h3>
+                                <p class="blog-excerpt">
+                                    Exploramos cómo la tecnología puede ayudar a crear conexiones más humanas y auténticas.
+                                </p>
+                                <a href="blog-futuro-dating.html" class="blog-link">Leer más →</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Mascota flotante al lado -->
+                        <div class="floating-mascot">
+                            <img src="mascota.png" alt="Mascota Bloom">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-cta">
+                    <button class="btn-secondary">Ver todos los artículos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Hablemos</h2>
+                    <p class="section-subtitle">¿Tienes preguntas, sugerencias o quieres formar parte del equipo? Nos encantaría escucharte.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>hola@bloomapp.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-details">
+                                <h3>Redes Sociales</h3>
+                                <p>@BloomApp en todas las plataformas</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">🏢</div>
+                            <div class="contact-details">
+                                <h3>Oficina</h3>
+                                <p>Madrid, España</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecciona un tema</option>
+                                <option value="general">Consulta general</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="press">Prensa</option>
+                                <option value="careers">Trabajar con nosotros</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary form-submit">
+                            <span class="submit-text">Enviar mensaje</span>
+                            <span class="submit-loading" style="display: none;">Enviando...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo.PNG-BftsKnejMRjkp92N19xn4SzYutqj1O.png" alt="Bloom" class="footer-logo-img">
+                </div>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#como-funciona">Cómo funciona</a>
+                    <a href="#roadmap">Roadmap</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                <div class="footer-social">
+                    <span>Síguenos:</span>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bloom. Donde las conexiones reales florecen.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Navegación -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo.PNG-BftsKnejMRjkp92N19xn4SzYutqj1O.png" alt="Bloom" class="nav-logo-img">
+            </div>
+            
+            <div class="nav-content">
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#como-funciona" class="nav-link">Cómo funciona</a>
+                    <a href="#roadmap" class="nav-link">Roadmap</a>
+                    <a href="#blog" class="nav-link">Blog</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn-secondary">Iniciar sesión</button>
+                    <button class="btn-primary" onclick="window.location.href='waitlist.html'">Únete a la lista de espera</button>
+                </div>
+            </div>
+            
+            <!-- Menú hamburguesa para móvil -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
